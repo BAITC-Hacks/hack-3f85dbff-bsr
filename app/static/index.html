@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#e31e24" />
+  <title>EKT AI — консультант</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <a class="logo" href="/" aria-label="EKT AI">
+        <span class="logo-mark">EKT</span>
+        <span class="logo-copy"><b>AI Assistant</b><small>Электрокомплект</small></span>
+      </a>
+      <div class="top-actions">
+        <span id="apiStatus" class="status"><i></i>API</span>
+        <button id="cartBtn" class="cart-button">Корзина <span id="cartCount">0</span></button>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="eyebrow">УМНЫЙ ПОМОЩНИК ПО КАТАЛОГУ EKT.KZ</div>
+      <h1>Найдёт товар. Проверит данные.<br><span>Поможет оформить выбор.</span></h1>
+      <p>Спросите про наличие, цену, характеристики, сертификаты, аналоги, доставку или прикрепите спецификацию.</p>
+      <div class="quick-prompts">
+        <button data-prompt="Покажи товар 515291">Товар 515291</button>
+        <button data-prompt="Есть ВВГ 3×2,5?">ВВГ 3×2,5</button>
+        <button data-prompt="Какие условия доставки и оплаты?">Доставка и оплата</button>
+        <button data-prompt="Подбери аналог для последнего товара">Подобрать аналог</button>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <section class="chat-card">
+        <div class="chat-head">
+          <div>
+            <strong>EKT AI</strong>
+            <span>Данные товаров берутся из API ekt.kz</span>
+          </div>
+          <span class="online-dot">Онлайн</span>
+        </div>
+
+        <div id="messages" class="messages">
+          <div class="message bot">
+            <div class="avatar">AI</div>
+            <div class="bubble">Здравствуйте! Напишите название или артикул товара. Например: «Есть ВВГ 3×2,5?» или «Добавь 10 шт. 515291 в корзину».</div>
+          </div>
+        </div>
+
+        <div id="files" class="files"></div>
+        <form id="chatForm" class="composer">
+          <label class="attach" title="Прикрепить PDF, DOCX, XLSX или изображение">
+            <input id="fileInput" type="file" accept=".pdf,.docx,.xlsx,.txt,.jpg,.jpeg,.png,.webp" hidden />
+            <span>+</span>
+          </label>
+          <textarea id="messageInput" rows="1" placeholder="Напишите вопрос о товаре…"></textarea>
+          <button id="sendBtn" type="submit">Отправить</button>
+        </form>
+        <div class="hint">Корзина изменяется только после явного подтверждения. Платёжные данные чат не запрашивает.</div>
+      </section>
+
+      <aside class="info-card">
+        <div class="info-kicker">Что умеет</div>
+        <h2>Один чат вместо поиска по каталогу</h2>
+        <div class="capability"><span>01</span><div><b>Поиск товаров</b><small>Название, артикул или ID</small></div></div>
+        <div class="capability"><span>02</span><div><b>Характеристики</b><small>Цена, наличие, сертификаты</small></div></div>
+        <div class="capability"><span>03</span><div><b>Аналоги</b><small>С объяснением сходства</small></div></div>
+        <div class="capability"><span>04</span><div><b>Файлы</b><small>PDF, Word, Excel, JPEG</small></div></div>
+        <div class="capability"><span>05</span><div><b>Безопасная корзина</b><small>Только после подтверждения</small></div></div>
+      </aside>
+    </section>
+
+    <section id="cartPanel" class="cart-panel hidden">
+      <div class="cart-head"><h2>Корзина прототипа</h2><button id="closeCart">Закрыть</button></div>
+      <div id="cartItems"></div>
+      <div id="cartTotal" class="cart-total"></div>
+      <p class="cart-note">Сейчас используется сессионная demo-корзина. Для production этот слой заменяется реальным API корзины ekt.kz.</p>
+    </section>
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+</html>
